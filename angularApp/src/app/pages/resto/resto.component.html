@@ -1,0 +1,4 @@
+<h2>La liste des restaurants : </h2>
+<app-resto-table [restos]="restos"></app-resto-table>
+<h2>Ajout de restaurant : </h2>
+<app-resto-form (restoCreated)="createResto($event)"></app-resto-form>

@@ -1,0 +1,28 @@
+<h2>Page de détails du restaurant {{resto.nom}}</h2>
+<h4>ID du restaurant : {{resto.id}}</h4>
+<h4>Adresse du restaurant : {{resto.adresse}}</h4>
+<h4 *ngIf="resto.moyenne <= -1">Moyenne du restaurant : /</h4>
+<h4 *ngIf="resto.moyenne > -1">Moyenne du restaurant : {{resto.moyenne}}</h4>
+
+<h2>Evaluations</h2>
+<table>
+    <tr>
+        <th scope="col">Evaluateur</th>
+        <th scope="col">Commentaire</th>
+        <th scope="col">Note</th>
+    </tr>
+    <tr *ngFor="let eval of evaluations">
+        <td>{{eval.evaluateur}}</td>
+        <td>{{eval.commentaire}}</td>
+        <td>{{eval.note}}</td>
+        <td><button>Supprimer</button></td> <!-- (click)="deleteEval()" -->
+    </tr>
+</table>
+
+<h2>Création d'évaluation : </h2>
+<app-eval-form (evalCreated)="createEval($event)"></app-eval-form>
+<span style="color: red" *ngIf="dispMessage">Note invalide</span>
+
+<h2>Edition du restaurant : </h2> 
+<!-- Pas besoin d'un autre formulaire, le formulaire de création de resto suffit pour mettre en place l'édition  -->
+<app-resto-form (restoCreated)="createResto($event)"></app-resto-form>

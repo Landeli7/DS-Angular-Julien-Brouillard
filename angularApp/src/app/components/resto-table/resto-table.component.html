@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Moyenne</th>
+    </tr>
+    <tr *ngFor="let resto of restos">
+        <td>{{resto.nom}}</td>
+        <td>{{resto.adresse}}</td>
+        <td *ngIf="resto.moyenne <= -1">/</td>
+        <td *ngIf="resto.moyenne > -1">{{resto.moyenne}}</td>
+        <td>
+            <a routerLink="{{resto.id}}">Détails</a>
+        </td>
+    </tr>
+</table>
